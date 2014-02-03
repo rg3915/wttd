@@ -51,7 +51,7 @@ DATABASES = {
     #    'NAME': BASE_DIR.child('db.sqlite3'),
     # }
     'defaul': dj_database_url.config(
-        default='sqlite3:///' + BASE_DIR.child('db.sqlite3'))
+        default='sqlite:///' + BASE_DIR.child('db.sqlite3'))
 }
 
 # Internationalization

@@ -47,12 +47,12 @@ WSGI_APPLICATION = 'eventex.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///' + BASE_DIR.child('db.sqlite3'))
     # 'default': {
     #    'ENGINE': 'django.db.backends.sqlite3',
     #    'NAME': BASE_DIR.child('db.sqlite3'),
     # }
-    'defaul': dj_database_url.config(
-        default='sqlite:///' + BASE_DIR.child('db.sqlite3'))
 }
 
 # Internationalization

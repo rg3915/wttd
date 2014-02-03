@@ -1,3 +1,4 @@
+import dj_database_url
 from unipath import Path
 BASE_DIR = Path(__file__).parent
 

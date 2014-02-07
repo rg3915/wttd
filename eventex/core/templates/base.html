@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>EventeX</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Le styles -->
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/background.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.gif">
     <style type="text/css">
 
     /* GLOBAL STYLES
@@ -20,6 +21,10 @@
       color: #5a5a5a;
     }
     </style>
+
+    {% block title %}
+      <title>EventeX</title>    
+    {% endblock %}
 
   </head>
 
@@ -35,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="{{ STATIC_URL }}img/logowhite.png" height="18px"></a>
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="{{ STATIC_URL }}img/logowhite.png" height="18px"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -47,7 +52,6 @@
       </div> <!-- /.container -->
     </div><!-- /.navbar-wrapper -->
 
-    <br>
     <br>
     <br>
     <br>

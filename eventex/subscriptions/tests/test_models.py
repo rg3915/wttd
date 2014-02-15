@@ -37,7 +37,7 @@ class SubscriptionUniqueTest(TestCase):
 		'CPF must be unique'
 		s = Subscription(
 			name='Regis da Silva',
-			cpf='00000000001',
+			cpf='00000000000',
 			email='segundo@gmail.com',
 			phone='11-00000000'
 		)
@@ -48,7 +48,7 @@ class SubscriptionUniqueTest(TestCase):
 		s = Subscription(
 			name='Regis da Silva',
 			cpf='00000000011',
-			email='terceiro@gmail.com',
+			email='regis.santos.100@gmail.com',
 			phone='11-00000000'
 		)
 		self.assertRaises(IntegrityError, s.save)

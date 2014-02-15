@@ -17,3 +17,4 @@ def subscribe(request):
 	else:
 		return render(request, 'subscriptions/subscription_form.html',
 				  {'form': SubscriptionForm()})
+	# vai refatorar

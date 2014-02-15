@@ -54,7 +54,7 @@ class SubscribeInvalidPostTest(TestCase):
 	def setUp(self):
 		data = dict(
 			name='Regis da Silva',
-			cpf='00000000012',
+			cpf='000000000012', # 12 digitos
 			email='regis.santos.100@gmail.com',
 			phone='11-00000000'
 		)
@@ -63,3 +63,11 @@ class SubscribeInvalidPostTest(TestCase):
 	def test_post(self):
 		'Invalid POST should not redirect.'
 		self.assertEqual(200, self.resp.status_code)
+
+	def test_form_errors(self):
+		'Form must contain errors.'
+		self.assertTrue(self.resp.context['form'].errors)
+
+	def test_dont_save(self):
+		'Do not save data.'
+		self.assertFalse(Subscription.objects.exists())

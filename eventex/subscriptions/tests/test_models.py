@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.test import TestCase
+from django.db import IntegrityError
 from datetime import datetime
 from eventex.subscriptions.models import Subscription
 
@@ -21,3 +22,33 @@ class SubscriptionTest(TestCase):
 		'Subscription must have automatic created_at.'
 		self.obj.save()
 		self.assertIsInstance(self.obj.created_at, datetime)
+
+class SubscriptionUniqueTest(TestCase):
+	def setUp(self):
+		# Create a first entry to force the collision.
+		Subscription.objects.create(
+			name='Regis da Silva',
+			cpf='00000000000',
+			email='regis.santos.100@gmail.com',
+			phone='11-00000000'
+		)
+
+	def test_cpf_unique(self):
+		'CPF must be unique'
+		s = Subscription(
+			name='Regis da Silva',
+			cpf='00000000001',
+			email='segundo@gmail.com',
+			phone='11-00000000'
+		)
+		self.assertRaises(IntegrityError, s.save)
+
+	def test_email_unique(self):
+		'Email must be unique'
+		s = Subscription(
+			name='Regis da Silva',
+			cpf='00000000011',
+			email='terceiro@gmail.com',
+			phone='11-00000000'
+		)
+		self.assertRaises(IntegrityError, s.save)

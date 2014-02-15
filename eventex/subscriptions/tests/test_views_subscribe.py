@@ -30,3 +30,17 @@ class SubscribeTest(TestCase):
 		'Context must have the subscription form.'
 		form = self.resp.context['form']
 		self.assertIsInstance(form, SubscriptionForm)
+
+class SubscribePostTest(TestCase):
+	def setUp(self):
+		data = dict(
+			name='Regis da Silva',
+			cpf='00000000000',
+			email='regis.santos.100@gmail.com',
+			phone='11-00000000'
+		)
+		self.resp = self.client.post('/inscricao/', data)
+
+	def test_post(self):
+		'Valid POST should redirect to /inscricao/1/'
+		self.assertEqual(302, self.resp.status_code)

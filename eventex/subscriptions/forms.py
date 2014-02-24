@@ -7,6 +7,8 @@ from eventex.subscriptions.models import Subscription
 def CPFValidator(value):
 	if not value.isdigit():
 		raise ValidationError(_(u'CPF deve conter apenas números'))
+	if len(value) != 11:
+		raise ValidationError(_(u'CPF deve ter 11 números'))
 
 class SubscriptionForm(forms.ModelForm):
 	class Meta:

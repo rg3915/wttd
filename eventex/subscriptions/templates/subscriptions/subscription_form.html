@@ -5,13 +5,13 @@
 		<h1>Formulário de inscrição</h1>
 		<form class="form-horizontal" action="." method="POST">
 			{% csrf_token %}
+			{{ form.non_field_errors }}
 			<div class="form-group">
 				<div class="col-md-1 control-label">
 					{{ form.name.label }}
 				</div>
 				<div class="col-md-1">
-					{{ form.name }}
-					{{ form.name.errors }}
+					{{ form.name }} {{ form.name.errors }}
 				</div>
 			</div>
 
@@ -20,8 +20,7 @@
 					{{ form.cpf.label }}
 				</div>
 				<div class="col-md-1">
-					{{ form.cpf }}
-					{{ form.cpf.errors }}
+					{{ form.cpf }} {{ form.cpf.errors }}
 				</div>
 			</div>
 
@@ -30,8 +29,7 @@
 					{{ form.email.label }}
 				</div>
 				<div class="col-md-1">
-					{{ form.email }}
-					{{ form.email.errors }}
+					{{ form.email }} {{ form.email.errors }}
 				</div>
 			</div>
 
@@ -40,8 +38,7 @@
 					{{ form.phone.label }}
 				</div>
 				<div class="col-md-1">
-					{{ form.phone }}
-					{{ form.phone.errors }}
+					{{ form.phone }} {{ form.phone.errors }}
 				</div>
 			</div>
 

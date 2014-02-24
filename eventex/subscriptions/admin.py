@@ -16,4 +16,9 @@ class SubscriptionAdmin(admin.ModelAdmin):
 	subscribed_today.short_description = _(u'Inscrito hoje?')
 	subscribed_today.boolean = True
 
+	actions = ['mark_as_paid']
+
+	def mark_as_paid(self, request, queryset):
+		count = queryset.update(paid=True)
+
 admin.site.register(Subscription, SubscriptionAdmin)

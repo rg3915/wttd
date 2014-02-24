@@ -15,6 +15,5 @@ class Subscription(models.Model):
 		verbose_name = _(u'inscrição')
 		verbose_name_plural = _(u'inscrições')
 
-
 	def __unicode__(self):
 		return self.name

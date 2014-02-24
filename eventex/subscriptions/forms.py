@@ -6,6 +6,7 @@ from django.core.validators import EMPTY_VALUES
 from eventex.subscriptions.models import Subscription
 
 def CPFValidator(value):
+	# TODO: Digito verificador
 	if not value.isdigit():
 		raise ValidationError(_(u'CPF deve conter apenas números'))
 	if len(value) != 11:
@@ -24,6 +25,7 @@ class PhoneWidget(forms.MultiWidget):
 		return value.split('-')
 
 class PhoneField(forms.MultiValueField):
+	# TODO: mascaras Angular
 	widget = PhoneWidget
 
 	def __init__(self, *args, **kwargs):
@@ -53,6 +55,7 @@ class SubscriptionForm(forms.ModelForm):
 		self.fields['cpf'].validators.append(CPFValidator)
 
 	def clean_name(self):
+		# TODO: Capitalize with nameparser
 		name = self.cleaned_data['name']
 		words = map(lambda w: w.capitalize(), name.split())
 		capitalized_name = ' '.join(words)

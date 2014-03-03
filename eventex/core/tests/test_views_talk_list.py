@@ -19,9 +19,17 @@ class TalkListTest(TestCase):
 		self.assertContains(self.resp, u'Título da palestra', 2)
 		self.assertContains(self.resp, u'10:00')
 		self.assertContains(self.resp, u'13:00')
-		self.assertContains(self.resp, u'/palestras/1')
-		self.assertContains(self.resp, u'/palestras/2')
-		self.assertContains(self.resp, u'/palestrantes/regis-da-silva', 2)
+		self.assertContains(self.resp, u'/palestras/1/')
+		self.assertContains(self.resp, u'/palestras/2/')
+		self.assertContains(self.resp, u'/palestrantes/regis-da-silva/', 2)
 		self.assertContains(self.resp, u'Software developer.', 2)
 		self.assertContains(self.resp, u'Regis da Silva', 2)
 		self.assertContains(self.resp, u'Descrição da palestra', 2)
+
+	def test_morning_talks_in_context(self):
+		self.assertIn('morning_talks', self.resp.context)
+
+	def test_afternoon_talks_in_context(self):
+		self.assertIn('afternoon_talks', self.resp.context)
+
+

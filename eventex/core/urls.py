@@ -5,5 +5,6 @@ urlpatterns = patterns('eventex.core.views',
     url(r'^$', 'home', name='home'),
     url(r'^contato/$', 'contato', name='contato'),
     url(r'^sobre/$', 'sobre', name='sobre'),
+    url(r'^palestrantes/(?P<slug>[\w-]+)/$', 'speaker_detail', name='speaker_detail'),
     # url(r'^(.+)/$', 'template_view', name='tpl'),
 )

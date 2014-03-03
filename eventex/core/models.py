@@ -12,6 +12,10 @@ class Speaker(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('core:speaker_detail', (), {'slug': self.slug})
+
 class Contact(models.Model):
 	KINDS = (
 		('P', _('Telefone')),
@@ -35,7 +39,11 @@ class Talk(models.Model):
     title = models.CharField(_(u'Título'), max_length=200)
     description = models.TextField(_(u'Descrição'))
     start_time = models.TimeField(_(u'Horário'), blank=True)
+    speakers = models.ManyToManyField('Speaker', verbose_name=_('palestrantes'))
+
+    class Meta:
+    	verbose_name = _('palestra')
+    	verbose_name_plural = _('palestras')
 
     def __unicode__(self):
         return self.title
-    

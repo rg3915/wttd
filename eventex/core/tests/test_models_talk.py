@@ -14,3 +14,11 @@ class TalkModelTest(TestCase):
 
 	def test_unicode(self):
 		self.assertEqual(u'Introdução ao Django', unicode(self.talk))
+
+	def test_speakers(self):
+		'Talk has many Speakers and vice-versa.'
+		self.talk.speakers.create(
+			name='Regis da Silva',
+			slug='regis-da-silva',
+			url='http://regis-wttd.herokuapp.com/')
+		self.assertEqual(1, self.talk.speakers.count())

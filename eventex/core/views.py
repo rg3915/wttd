@@ -17,5 +17,8 @@ def speaker_detail(request, slug):
 	context = {'speaker': speaker}
 	return render(request, 'core/speaker_detail.html', context)
 
+def talk_list(request):
+	return render(request, 'core/talk_list.html')
+
 #def template_view(request, template_name):
 #	return render(request, template_name + '.html')

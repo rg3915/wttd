@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from eventex.core.managers import (KindContactManager)
+from eventex.core.managers import KindContactManager, PeriodManager
 
 class Speaker(models.Model):
 	name = models.CharField(_('Nome'), max_length=255)
@@ -41,9 +41,15 @@ class Talk(models.Model):
     start_time = models.TimeField(_(u'Horário'), blank=True)
     speakers = models.ManyToManyField('Speaker', verbose_name=_('palestrantes'))
 
+    objects = PeriodManager()
+
     class Meta:
     	verbose_name = _('palestra')
     	verbose_name_plural = _('palestras')
 
     def __unicode__(self):
         return self.title
+
+    def get_absolute_url(self):
+    	# TODO: Use reverse.
+    	return '/palestras/%d/' % self.pk

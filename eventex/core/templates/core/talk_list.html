@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
 	<h3>Manhã</h3>
 	{% for talk in morning_talks %}
 		{% include 'core/talk_list_snippet.html' %}
@@ -14,4 +15,5 @@
 	{% empty %}
 		<p>Não existem palestras durante a tarde.</p>
 	{% endfor %}
+</div>
 {% endblock content %}

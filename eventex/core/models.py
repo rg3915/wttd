@@ -50,9 +50,9 @@ class Talk(models.Model):
     def __unicode__(self):
         return self.title
 
+    @models.permalink
     def get_absolute_url(self):
-    	# TODO: Use reverse.
-    	return '/palestras/%d/' % self.pk
+    	return ('core:talk_detail', (), {'pk'}: self.pk)
 
 # Multi-Table Inheritance
 class Course(Talk):

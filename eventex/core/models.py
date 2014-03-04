@@ -54,6 +54,14 @@ class Talk(models.Model):
     def get_absolute_url(self):
     	return ('core:talk_detail', (), {'pk': self.pk})
 
+    @property
+    def slides(self):
+    	return self.media_set.filter(kind='SL')
+
+    @property
+    def videos(self):
+    	return self.media_set.filter(kind='YT')
+
 # Multi-Table Inheritance
 class Course(Talk):
 	slots = models.IntegerField(_('vagas'))

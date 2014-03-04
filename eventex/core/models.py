@@ -52,7 +52,7 @@ class Talk(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-    	return ('core:talk_detail', (), {'pk'}: self.pk)
+    	return ('core:talk_detail', (), {'pk': self.pk})
 
 # Multi-Table Inheritance
 class Course(Talk):

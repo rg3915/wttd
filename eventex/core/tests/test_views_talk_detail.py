@@ -23,3 +23,7 @@ class TalkDetailTest(TestCase):
 		response = self.client.get(r('core:talk_detail', args=[0]))
 		self.assertEqual(404, response.status_code)
 
+	def test_html(self):
+		self.assertContains(self.resp, 'Talk')
+		self.assertContains(self.resp, '/palestrantes/regis-da-silva')
+		self.assertContains(self.resp, 'Regis da Silva')

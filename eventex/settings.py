@@ -19,11 +19,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '.herokuapp.com']
 
-
-AUTHENTICATION_BACKENDS = (
-    'eventex.myauth.backends.EmailBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
+AUTH_USER_MODEL='myauth.User'
 
 # Application definition
 
